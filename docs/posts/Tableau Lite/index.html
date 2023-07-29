@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Sougata maity">
-<meta name="dcterms.date" content="2023-07-20">
+<meta name="author" content="Sougata Maity">
+<meta name="dcterms.date" content="2023-07-28">
 
-<title>blog-with-me - Data Science</title>
+<title>Content with Code - Tableau Lite</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -73,7 +107,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">blog-with-me</span>
+    <span class="navbar-title">Content with Code</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -82,17 +116,13 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="" target="">
- <span class="menu-text">About</span></a>
-  </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/sougatamaity" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com" rel="" target=""><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="http://sgtm.tech" rel="" target=""><i class="bi bi-linkdln" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -107,9 +137,10 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Data Science</h1>
+      <h1 class="title">Tableau Lite</h1>
+            <p class="subtitle lead">Custom application using python streamlit and pygwalker</p>
                                 <div class="quarto-categories">
-                <div class="quarto-category">news</div>
+                <div class="quarto-category">python</div>
                 <div class="quarto-category">analysis</div>
               </div>
                   </div>
@@ -121,14 +152,14 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>Sougata maity </p>
+               <p>Sougata Maity </p>
             </div>
     </div>
       
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">July 20, 2023</p>
+        <p class="date">July 28, 2023</p>
       </div>
     </div>
     
@@ -146,10 +177,70 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>This is the testing post. I want to see if all are properly rendering or not if there any errors or not rendering then later I fixed the code.</p>
-<p>Since this post doesn’t specify an explicit image, the first image in the post will be used on the listing page of posts.</p>
+<p>Tableau is used for data visualization and business intelligence, helping users analyze and explore data through interactive visualizations. Its user-friendly interface and data connectivity allow for easy exploration of various data sources, while dashboards and data stories enable effective communication of insights. With scalability and advanced analytics capabilities, Tableau is a powerful tool for organizations to make data-driven decisions and gain valuable insights from their data.</p>
+<p>It a separate application to doing this but some times we are need inside our python application or jupyter notebook, streamlit or any other python application framework.</p>
+<p>As a data analyst main work to do</p>
+<ul>
+<li>Finding results as per business problems using business data.</li>
+<li>Solving research problems in a study using capture data.</li>
+<li>Curiosity about finding inside in a data set or multiple data sets.</li>
+<li>Pattern finding and model fitting based on the data.</li>
+</ul>
+<p>All of them are easily recognized based on the graphical representation based on selected appropriate selecting feature (variable) and manipulation.</p>
+<section id="streamlit-application" class="level3">
+<h3 class="anchored" data-anchor-id="streamlit-application">Streamlit application</h3>
+<p>Streamlit is a Python library used to create web applications for data science and machine learning projects. With just a few lines of code, developers can transform data scripts into interactive web apps. It simplifies the process of sharing and visualizing data, making it an efficient and user-friendly tool for data scientists and developers to showcase their work and engage with end-users interactively.</p>
+<p>Here we are creating a <strong>python</strong> <strong>streamlit</strong> application using <strong>pygwalker.</strong></p>
+<p>It is a good practice to creating separate for all the project and inside folder creating and storing all necessary files. For this project creating a folder tableauLite inside this folders crating two files app.py and requirements.txt inside requirements.txt file write pandas, streamlit and pygwalker.</p>
+<p>Open anaconda prompt set this file location and run the code <strong>pip install -r requirements.txt</strong> (all files are upload my github page)</p>
+<p>Now open our main app.py files and copy past this code otherwise download this file in my github page to direct run the code.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>import streamlit as st</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>import pandas as pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>import pygwalker as pyg</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>import streamlit.components.v1 as components</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>def <span class="fu">main</span>()<span class="sc">:</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">st.set_page_config</span>(<span class="at">layout=</span><span class="st">"wide"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    custom_css <span class="ot">=</span> <span class="st">"""</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="st">    &lt;style&gt;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="st">    body {</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="st">        margin-top: 1px;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="st">    }</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="st">    &lt;/style&gt;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">st.markdown</span>(custom_css, <span class="at">unsafe_allow_html=</span>True)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data_input</span>()</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data_output</span>()</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>def <span class="fu">data_input</span>()<span class="sc">:</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Use Streamlit widgets in the sidebar to get user input</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    uploaded_file <span class="ot">=</span> <span class="fu">st.sidebar.file_uploader</span>(<span class="st">"Upload a CSV file"</span>, <span class="at">type=</span>[<span class="st">"csv"</span>])</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Process the uploaded file if it exists</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> uploaded_file is not None<span class="sc">:</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        df <span class="ot">=</span> <span class="fu">pd.read_csv</span>(uploaded_file)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        st.session_state[<span class="st">'uploaded_df'</span>] <span class="ot">=</span> df</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>def <span class="fu">data_output</span>()<span class="sc">:</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">'uploaded_df'</span> <span class="cf">in</span> st.session_state<span class="sc">:</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>        df <span class="ot">=</span> st.session_state[<span class="st">'uploaded_df'</span>]</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        pyg_html <span class="ot">=</span> <span class="fu">pyg.walk</span>(df, <span class="at">return_html=</span>True)</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        <span class="fu">components.html</span>(pyg_html, <span class="at">height=</span> <span class="dv">1000</span>,  <span class="at">scrolling=</span>True)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> __name__ <span class="sc">==</span> <span class="st">"__main__"</span><span class="sc">:</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">main</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Finally we have necessary files now open teminal and run <strong>streamlit run app.py</strong> it will start a local web server and provide you with a local URL <strong><code>http://localhost:8501</code></strong>. Open the web browser and enter this URL to access our Streamlit application.</p>
+<p>In general now this version two tabs one is Data and another is Visualization.</p>
+<p><strong>Visualization Tab</strong></p>
+<p><img src="tableau lite.PNG" class="img-fluid"></p>
+<p><strong>Data Tab</strong></p>
+<p><img src="tableau lite data tab.PNG" class="img-fluid"></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
