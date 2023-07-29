@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sougata Maity">
-<meta name="dcterms.date" content="2023-07-28">
+<meta name="dcterms.date" content="2023-08-01">
 
-<title>Content with Code - Tableau Lite</title>
+<title>Content with Code - Process data using apply function</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -137,11 +137,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Tableau Lite</h1>
-            <p class="subtitle lead">Custom application using python streamlit and pygwalker</p>
+      <h1 class="title">Process data using apply function</h1>
+            <p class="subtitle lead">Use apply function to process data row-wise or column-wise efficiently.</p>
                                 <div class="quarto-categories">
                 <div class="quarto-category">python</div>
                 <div class="quarto-category">Data analysis</div>
+                <div class="quarto-category">R Code</div>
+                <div class="quarto-category">Statistics</div>
               </div>
                   </div>
   </div>
@@ -159,7 +161,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">July 28, 2023</p>
+        <p class="date">August 1, 2023</p>
       </div>
     </div>
     
@@ -177,67 +179,140 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p>Tableau is used for data visualization and business intelligence, helping users analyze and explore data through interactive visualizations. Its user-friendly interface and data connectivity allow for easy exploration of various data sources, while dashboards and data stories enable effective communication of insights. With scalability and advanced analytics capabilities, Tableau is a powerful tool for organizations to make data-driven decisions and gain valuable insights from their data.</p>
-<p>It a separate application to doing this but some times we are need inside our python application or jupyter notebook, streamlit or any other python application framework.</p>
-<p>As a data analyst main work to do</p>
-<ul>
-<li>Finding results as per business problems using business data.</li>
-<li>Solving research problems in a study using capture data.</li>
-<li>Curiosity about finding inside in a data set or multiple data sets.</li>
-<li>Pattern finding and model fitting based on the data.</li>
-</ul>
-<p>All of them are easily recognized based on the graphical representation based on selected appropriate selecting feature (variable) and manipulation.</p>
-<section id="streamlit-application" class="level3">
-<h3 class="anchored" data-anchor-id="streamlit-application">Streamlit application</h3>
-<p>Streamlit is a Python library used to create web applications for data science and machine learning projects. With just a few lines of code, developers can transform data scripts into interactive web apps. It simplifies the process of sharing and visualizing data, making it an efficient and user-friendly tool for data scientists and developers to showcase their work and engage with end-users interactively.</p>
-<p>Here we are creating a <strong>python</strong> <strong>streamlit</strong> application using <strong>pygwalker.</strong></p>
-<p>It is a good practice to creating separate for all the project and inside folder creating and storing all necessary files. For this project creating a folder tableauLite inside this folders crating two files app.py and requirements.txt inside requirements.txt file write pandas, streamlit and pygwalker.</p>
-<p>Open anaconda prompt set this file location and run the code <strong>pip install -r requirements.txt</strong> (all files are upload my github page)</p>
-<p>Now open our main app.py files and copy past this code otherwise download this file in my github page to direct run the code.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>import streamlit as st</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>import pandas as pd</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>import pygwalker as pyg</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>import streamlit.components.v1 as components</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>def <span class="fu">main</span>()<span class="sc">:</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">st.set_page_config</span>(<span class="at">layout=</span><span class="st">"wide"</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    custom_css <span class="ot">=</span> <span class="st">"""</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="st">    &lt;style&gt;</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="st">    body {</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="st">        margin-top: 1px;</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="st">    }</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="st">    &lt;/style&gt;</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">st.markdown</span>(custom_css, <span class="at">unsafe_allow_html=</span>True)</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data_input</span>()</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data_output</span>()</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>def <span class="fu">data_input</span>()<span class="sc">:</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Use Streamlit widgets in the sidebar to get user input</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    uploaded_file <span class="ot">=</span> <span class="fu">st.sidebar.file_uploader</span>(<span class="st">"Upload a CSV file"</span>, <span class="at">type=</span>[<span class="st">"csv"</span>])</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Process the uploaded file if it exists</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> uploaded_file is not None<span class="sc">:</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        df <span class="ot">=</span> <span class="fu">pd.read_csv</span>(uploaded_file)</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        st.session_state[<span class="st">'uploaded_df'</span>] <span class="ot">=</span> df</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>def <span class="fu">data_output</span>()<span class="sc">:</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">'uploaded_df'</span> <span class="cf">in</span> st.session_state<span class="sc">:</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>        df <span class="ot">=</span> st.session_state[<span class="st">'uploaded_df'</span>]</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        pyg_html <span class="ot">=</span> <span class="fu">pyg.walk</span>(df, <span class="at">return_html=</span>True)</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        <span class="fu">components.html</span>(pyg_html, <span class="at">height=</span> <span class="dv">1000</span>,  <span class="at">scrolling=</span>True)</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>   </span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> __name__ <span class="sc">==</span> <span class="st">"__main__"</span><span class="sc">:</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">main</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<style type="text/css">
+.justify {
+  text-align: justify !important
+}
+</style>
 </div>
-<p>Finally we have necessary files now open teminal and run <strong>streamlit run app.py</strong> it will start a local web server and provide you with a local URL <strong><code>http://localhost:8501</code></strong>. Open the web browser and enter this URL to access our Streamlit application.</p>
-<p>In general now this version two tabs one is Data and another is Visualization.</p>
-<p><strong>Visualization Tab</strong></p>
-<p><img src="tableau lite.PNG" class="img-fluid"></p>
-<p><strong>Data Tab</strong></p>
-<p><img src="tableau lite data tab.PNG" class="img-fluid"></p>
+<div class="justify">
+<p>Apply function one of the most important to row or column manipulation to apply a function to either rows or columns of a matrix or data frame. The apply function is a powerful tool for performing operations across rows or columns efficiently.</p>
+<p>The primary purpose of using a row-wise apply function is to perform element-wise operations or computations on individual rows of the data and generate new values or summaries based on the row-level data.</p>
+<p>Here are a few common use cases and benefits of using row-wise apply functions:</p>
+<ol type="1">
+<li><p>Element-wise operations: Sometimes, you need to perform calculations or transformations on elements within a row independently of other rows. Using a row-wise apply function allows you to conveniently apply a function to each row, processing the elements in isolation.</p></li>
+<li><p>Feature engineering: When working with datasets, you might need to create new features based on existing ones. A row-wise apply function can be used to generate new columns in a DataFrame or matrix by applying a function to the values of each row.</p></li>
+<li><p>Row-wise aggregation: In data analysis, you may want to summarize or aggregate data at the row level, like calculating the mean, median, sum, or any custom function of multiple values within a row. Row-wise apply functions enable you to perform these operations efficiently.</p></li>
+<li><p>Conditional computations: When dealing with complex data structures, you may need to apply different computations to different rows based on specific conditions. Row-wise apply functions can handle such cases by allowing you to implement custom logic for each row.</p></li>
+<li><p>Parallel processing: Depending on the implementation, some row-wise apply functions can take advantage of parallel processing, which can significantly speed up computations on large datasets.</p></li>
+</ol>
+<p>When choosing to use a row-wise apply function, consider the size of your dataset, the complexity of the computation, and the available resources. As with any programming task, it’s essential to balance readability, maintainability, and performance.</p>
+</div>
+<section id="r-code" class="level3">
+<h3 class="anchored" data-anchor-id="r-code">R-Code</h3>
+<p><strong>Using apply for Row-wise sum</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">A =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">B =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>),</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">C =</span> <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  A B C
+1 1 4 7
+2 2 5 8
+3 3 6 9</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>rowsum <span class="ot">&lt;-</span> <span class="fu">apply</span>(df, <span class="dv">1</span>, sum)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  A B C rowsum
+1 1 4 7     12
+2 2 5 8     15
+3 3 6 9     18</code></pre>
+</div>
+</div>
+<p>Here in this apply function use in build <strong>sum</strong> function but we use custom function also. We take a function <strong>mul2each</strong> sum (each number multiply with own plus 2).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mul2each <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  res <span class="ot">=</span> <span class="fu">sum</span>((x<span class="sc">*</span>x) <span class="sc">+</span> <span class="dv">2</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(res)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">A =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">B =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>),</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">C =</span> <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>df2<span class="sc">$</span>result <span class="ot">&lt;-</span> <span class="fu">apply</span>(df2, <span class="dv">1</span>, mul2each)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>df2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  A B C result
+1 1 4 7     72
+2 2 5 8     99
+3 3 6 9    132</code></pre>
+</div>
+</div>
+<p>As per requirements create a function and link this function inside the main apply function.</p>
+<p><strong>Using apply for Column-wise sum</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df3 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">A =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">B =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>),</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">C =</span> <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>colsum <span class="ot">&lt;-</span> <span class="fu">apply</span>(df, <span class="dv">2</span>, sum)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>colsum</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     A      B      C rowsum 
+     6     15     24     45 </code></pre>
+</div>
+</div>
+<p>Similarly as per requirements create a custom function and use it for finding column manipulation.</p>
+</section>
+<section id="python" class="level3">
+<h3 class="anchored" data-anchor-id="python">Python</h3>
+<p><strong>Using apply for Row-wise sum</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'A'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'B'</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>],</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'C'</span>: [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   A  B  C
+0  1  4  7
+1  2  5  8
+2  3  6  9</code></pre>
+</div>
+</div>
+<p>Creating a custom function sum of (number *2 + 2)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sum_of_squares(row):</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sum</span>((row<span class="op">**</span><span class="dv">2</span>)<span class="op">+</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>row_sum <span class="op">=</span> df.<span class="bu">apply</span>(sum_of_squares, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(row_sum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0     72
+1     99
+2    132
+dtype: int64</code></pre>
+</div>
+</div>
+<p><strong>Using apply for Column-wise sum</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>column_sum <span class="op">=</span> df.<span class="bu">apply</span>(sum_of_squares, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(column_sum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>A     20
+B     83
+C    200
+dtype: int64</code></pre>
+</div>
+</div>
 
 
 </section>

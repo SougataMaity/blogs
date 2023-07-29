@@ -2,12 +2,12 @@
 title: "EasyTask"
 author: "Sougata Maity"
 date: "2023-07-28"
-categories: [python, Data Analyst, Streamlit]
+categories: [python, Data Analysis, Streamlit]
 image: "banner.jpg"
 subtitle: "Custom application transforms CSV data into actionable insights with just a few clicks"
 ---
 
-As a data analyst, working with a data set involves several important steps to gain insights and make informed decisions.some important or crucial aspects is:
+As a data analyst, working with a data set involves several important steps to gain insights and make informed decisions some important or crucial aspects are -
 
 -   Data Set Summary
 -   Data Distribution

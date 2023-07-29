@@ -1,0 +1,59 @@
+---
+title: "Configure multiple SSH keys for different GitHub accounts in Git."
+author: "Sougata Maity"
+date: "2023-08-01"
+categories: [Data Science, github, git]
+image: "banner.jpg"
+subtitle: "Generate two SSH keys, add them to the GitHub accounts, and set up `~/.ssh/config` to associate each key with the corresponding account."
+---
+
+
+To connect SSH keys for two separate GitHub accounts (one personal and another professional) on your local desktop, we can follow these steps:
+
+1. **Generate SSH Keys**: First, we need to generate SSH keys for each GitHub account. Open a terminal or command prompt on our local machine and run the following command, replacing "your_email@example.com" with the email associated with each GitHub account:
+   ```
+   ssh-keygen -t ed25519 -C "your_email@example.com"
+   ```
+
+   This command generates a new SSH key pair (public and private keys) for each email address you provide.
+
+2. **Save SSH Keys**: When prompted, we can choose the location to save the SSH keys. By default, the keys are saved in the `~/.ssh` directory with names like `id_ed25519` for the private key and `id_ed25519.pub` for the public key. Now we have two pairs of keys for each GitHub account.
+
+3. **Add SSH Keys to GitHub Accounts**:
+   - Log in to your personal GitHub account in a web browser.
+   - Go to "Settings" > "SSH and GPG keys".
+   - Click on "New SSH key".
+   - Open the public key file `id_ed25519.pub` from your personal account's SSH key pair (usually located in `~/.ssh`) and copy its content.
+   - Paste the content into the "Key" field on GitHub and give the key a descriptive title (e.g., "Personal GitHub Key").
+   - Click "Add SSH key" to save it.
+
+   Repeat the same process for your professional GitHub account, adding the public key from the other SSH key pair.
+
+4. **Configure SSH Config File**: To make sure your SSH client uses the correct key for each GitHub account, you can create or edit your `~/.ssh/config` file. Open the file in a text editor and add the following configuration:
+
+   ```
+   # Personal GitHub account
+   Host github.com-personal
+   HostName github.com
+   User git
+   IdentityFile ~/.ssh/id_ed25519
+
+   # Professional GitHub account
+   Host github.com-professional
+   HostName github.com
+   User git
+   IdentityFile ~/.ssh/other_id_ed25519
+   ```
+
+   Replace `~/.ssh/id_ed25519` with the path to your personal private key and `~/.ssh/other_id_ed25519` with the path to your professional private key.
+
+5. **Use SSH URLs for Repositories**: Now, when we want to clone or interact with repositories associated with each GitHub account, we use SSH URLs with the custom hosts you defined in the `~/.ssh/config` file. For example:
+   ```
+   # Personal GitHub account repository
+   git clone git@github.com-personal:user/repo.git
+
+   # Professional GitHub account repository
+   git clone git@github.com-professional:user/repo.git
+   ```
+
+With these steps, we should be able to use separate SSH keys for your personal and professional GitHub accounts on your local desktop. The `~/.ssh/config` file will help your SSH client select the appropriate key based on the custom hosts you specified for each account.

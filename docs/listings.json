@@ -2,6 +2,9 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/Dealing with missing data/index.html",
+      "/posts/Process data using apply function/index.html",
+      "/posts/Two github account connect with ssh/index.html",
       "/posts/EasyTask/index.html",
       "/posts/Tableau Lite/index.html"
     ]

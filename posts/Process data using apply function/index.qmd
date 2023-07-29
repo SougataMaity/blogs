@@ -1,0 +1,126 @@
+---
+title: "Process data using apply function"
+author: "Sougata Maity"
+date: "2023-08-01"
+categories: [python, Data analysis, R Code, Statistics]
+image: "banner.png"
+subtitle: "Use apply function to process data row-wise or column-wise efficiently."
+---
+
+```{css, echo = FALSE}
+.justify {
+  text-align: justify !important
+}
+```
+
+::: justify
+Apply function one of the most important to row or column manipulation to apply a function to either rows or columns of a matrix or data frame. The apply function is a powerful tool for performing operations across rows or columns efficiently.
+
+The primary purpose of using a row-wise apply function is to perform element-wise operations or computations on individual rows of the data and generate new values or summaries based on the row-level data.
+
+Here are a few common use cases and benefits of using row-wise apply functions:
+
+1.  Element-wise operations: Sometimes, you need to perform calculations or transformations on elements within a row independently of other rows. Using a row-wise apply function allows you to conveniently apply a function to each row, processing the elements in isolation.
+
+2.  Feature engineering: When working with datasets, you might need to create new features based on existing ones. A row-wise apply function can be used to generate new columns in a DataFrame or matrix by applying a function to the values of each row.
+
+3.  Row-wise aggregation: In data analysis, you may want to summarize or aggregate data at the row level, like calculating the mean, median, sum, or any custom function of multiple values within a row. Row-wise apply functions enable you to perform these operations efficiently.
+
+4.  Conditional computations: When dealing with complex data structures, you may need to apply different computations to different rows based on specific conditions. Row-wise apply functions can handle such cases by allowing you to implement custom logic for each row.
+
+5.  Parallel processing: Depending on the implementation, some row-wise apply functions can take advantage of parallel processing, which can significantly speed up computations on large datasets.
+
+When choosing to use a row-wise apply function, consider the size of your dataset, the complexity of the computation, and the available resources. As with any programming task, it's essential to balance readability, maintainability, and performance.
+:::
+
+### R-Code
+
+**Using apply for Row-wise sum**
+
+```{r}
+df <- data.frame(
+  A = c(1, 2, 3),
+  B = c(4, 5, 6),
+  C = c(7, 8, 9)
+)
+
+df
+```
+
+```{r}
+df$rowsum <- apply(df, 1, sum)
+df
+```
+
+Here in this apply function use in build **sum** function but we use custom function also. We take a function **mul2each** sum (each number multiply with own plus 2).
+
+```{r}
+mul2each <- function(x){
+  res = sum((x*x) + 2)
+  return(res)
+}
+
+df2 <- data.frame(
+  A = c(1, 2, 3),
+  B = c(4, 5, 6),
+  C = c(7, 8, 9)
+)
+
+df2$result <- apply(df2, 1, mul2each)
+df2
+```
+
+As per requirements create a function and link this function inside the main apply function.
+
+**Using apply for Column-wise sum**
+
+```{r}
+df3 <- data.frame(
+  A = c(1, 2, 3),
+  B = c(4, 5, 6),
+  C = c(7, 8, 9)
+)
+
+colsum <- apply(df, 2, sum)
+colsum
+```
+
+Similarly as per requirements create a custom function and use it for finding column manipulation.
+
+### Python
+
+**Using apply for Row-wise sum**
+
+```{python}
+
+import pandas as pd
+
+df = pd.DataFrame({
+    'A': [1, 2, 3],
+    'B': [4, 5, 6],
+    'C': [7, 8, 9]
+})
+df
+```
+
+Creating a custom function sum of (number \*2 + 2)
+
+```{python}
+
+def sum_of_squares(row):
+    return sum((row**2)+2)
+```
+
+```{python}
+
+row_sum = df.apply(sum_of_squares, axis=1)
+print(row_sum)
+```
+
+**Using apply for Column-wise sum**
+
+```{python}
+
+column_sum = df.apply(sum_of_squares, axis=0)
+print(column_sum)
+```
