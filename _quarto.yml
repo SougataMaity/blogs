@@ -1,0 +1,19 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Content with Code"
+  navbar:
+    right:
+      - icon: github
+        href: https://github.com/sougatamaity
+      - icon: linkdln
+        href: http://sgtm.tech
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+
+editor: visual
+
