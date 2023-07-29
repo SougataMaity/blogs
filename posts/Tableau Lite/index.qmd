@@ -3,7 +3,7 @@ title: "Tableau Lite"
 author: "Sougata Maity"
 date: "2023-07-28"
 categories: [python, analysis]
-image: "tableau banner.png"
+image: "banner.jpg"
 subtitle: "Custom application using python streamlit and pygwalker"
 ---
 
